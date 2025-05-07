@@ -1,12 +1,12 @@
 let modInfo = {
 	name: "The Void",
 	author: "CHARIS ESKHATON",
-	pointsName: "points",
+	pointsName: "void particles",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (1), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -42,6 +42,9 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(0)
+	if (hasUpgrade('a', 11)) gain = gain.add(0.1)
+	if (hasUpgrade('a', 12)) gain = gain.times(2)
+	if (hasUpgrade('a', 13)) gain = gain.times(5)
 	return gain
 }
 
